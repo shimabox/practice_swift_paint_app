@@ -28,6 +28,7 @@ class PaintViewController: UIViewController {
         drawImage()
     }
     
+    // お絵かきする
     private func drawImage(){
         
         drawView.drawTool = ACEDrawingToolTypePen
@@ -66,11 +67,27 @@ class PaintViewController: UIViewController {
         }
     }
     
+    // 保存成功時のアラート表示
     func showSaveAlert() {
         let alert = UIAlertController(title: "保存しました！", message: "画像をカメラロールに保存しました。", preferredStyle: UIAlertControllerStyle.Alert)
         let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action -> Void in })
         alert.addAction(action)
         presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    // 削除するボタン押下時
+    @IBAction func tapDeleteButton(sender: UIButton) {
+        
+        let alertController = UIAlertController(title: "ちょっとまって！", message: "お絵描きを消しますか？", preferredStyle: .Alert)
+        let deleteAction = UIAlertAction(title: "はい。消します！", style: .Default) {
+            action in self.drawView.clear()
+        }
+        let cancelAction = UIAlertAction(title: "消さない！", style: .Cancel) { action -> Void in }
+        
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

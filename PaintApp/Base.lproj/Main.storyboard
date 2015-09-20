@@ -118,9 +118,25 @@
                                                     <action selector="tapSaveButton:" destination="xGf-qh-rVV" eventType="touchUpInside" id="v2Z-qm-xkg"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w6d-NV-Sxk">
+                                                <rect key="frame" x="0.0" y="474" width="80" height="30"/>
+                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="0lz-Bh-6HW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="全部消す">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tapDeleteButton:" destination="xGf-qh-rVV" eventType="touchUpInside" id="Orh-vO-5AX"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="IPP-ow-BGI" secondAttribute="trailing" id="3ch-Xv-hKr"/>
+                                            <constraint firstItem="w6d-NV-Sxk" firstAttribute="leading" secondItem="5RG-PH-AGL" secondAttribute="leading" id="8d5-3y-wKB"/>
+                                            <constraint firstAttribute="bottom" secondItem="w6d-NV-Sxk" secondAttribute="bottom" id="eAD-Ky-L5Y"/>
                                             <constraint firstAttribute="bottom" secondItem="IPP-ow-BGI" secondAttribute="bottom" id="pej-zd-VKQ"/>
                                         </constraints>
                                     </view>
