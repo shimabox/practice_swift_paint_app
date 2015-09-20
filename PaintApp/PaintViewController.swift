@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import AudioToolbox
 
-class PaintViewController: UIViewController {
-
+class PaintViewController: UIViewController, ACEDrawingViewDelegate{
+    
     // 背景画像とお絵かきゾーンをまとめたもの
     @IBOutlet weak var canvasView: UIView!
     
@@ -33,6 +34,8 @@ class PaintViewController: UIViewController {
         
         drawView.drawTool = ACEDrawingToolTypePen
         drawView.lineWidth = 3.0
+        // デリゲート
+        drawView.delegate = self
         
         if let image = cameraImage{
             //背景画像に
@@ -88,6 +91,14 @@ class PaintViewController: UIViewController {
         alertController.addAction(cancelAction)
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    // - (void)drawingView:(ACEDrawingView *)view willBeginDrawUsingTool:(id<ACEDrawingTool>)tool;
+    // - (void)drawingView:(ACEDrawingView *)view didEndDrawUsingTool:(id<ACEDrawingTool>)tool;
+    // お絵描き開始
+    func drawingView(view:ACEDrawingView, willBeginDrawUsingTool tool:AnyObject) {
+        // バイブレーション
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
     
     override func didReceiveMemoryWarning() {
