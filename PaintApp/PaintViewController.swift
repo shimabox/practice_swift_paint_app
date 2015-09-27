@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import AudioToolbox
+import AVFoundation
 
-class PaintViewController: UIViewController, ACEDrawingViewDelegate{
+class PaintViewController: UIViewController, ACEDrawingViewDelegate, AVAudioPlayerDelegate {
     
     // 背景画像とお絵かきゾーンをまとめたもの
     @IBOutlet weak var canvasView: UIView!
@@ -20,13 +20,47 @@ class PaintViewController: UIViewController, ACEDrawingViewDelegate{
     // お絵かき
     @IBOutlet weak var drawView: ACEDrawingView!
     
+    // 音
+    var audioPlayer:AVAudioPlayer?
+    
     // 選択カメラ画像
     var cameraImage:UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        initAudioPlayer()
         drawImage()
+    }
+    
+    // AudioPlayerの初期化
+    private func initAudioPlayer() {
+        audioPlayer = createAudioPlayer()
+        
+        guard let ap = audioPlayer else {
+            return
+        }
+        
+        ap.delegate = self
+        ap.prepareToPlay()
+    }
+    
+    // AudioPlayerの生成
+    private func createAudioPlayer() -> AVAudioPlayer? {
+        // 再生する audio ファイルのパスを取得
+        // onara_002.mp3 @link http://onara-mp3.com/material.html
+        let audioPath = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("onara_002", ofType: "mp3")!)
+        
+        var audioPlayer:AVAudioPlayer?
+        
+        do {
+            try audioPlayer = AVAudioPlayer(contentsOfURL: audioPath, fileTypeHint: nil)
+        } catch {
+            //Handle the error
+            print("Error : PaintViewController->createAudioPlayer()")
+        }
+        
+        return audioPlayer;
     }
     
     // お絵かきする
@@ -45,7 +79,7 @@ class PaintViewController: UIViewController, ACEDrawingViewDelegate{
     
     // 保存するボタン押下時
     @IBAction func tapSaveButton(sender: UIButton) {
-        //背景とお絵かき画像を重ねて画像化します。
+        // 背景とお絵かき画像を重ねて画像化します。
         UIGraphicsBeginImageContextWithOptions(canvasView.frame.size, false, 0)
         
         canvasView.layer.renderInContext(UIGraphicsGetCurrentContext()!)
@@ -53,8 +87,7 @@ class PaintViewController: UIViewController, ACEDrawingViewDelegate{
         
         UIGraphicsEndImageContext()
         
-        
-        //写真アルバムに保存します。
+        // 写真アルバムに保存します。
         UIImageWriteToSavedPhotosAlbum(exportImage,
             self, "image:didFinishSavingWithError:contextInfo:", nil)
         
@@ -93,12 +126,15 @@ class PaintViewController: UIViewController, ACEDrawingViewDelegate{
         presentViewController(alertController, animated: true, completion: nil)
     }
     
+    // ACEDrawingView delegate method
     // - (void)drawingView:(ACEDrawingView *)view willBeginDrawUsingTool:(id<ACEDrawingTool>)tool;
     // - (void)drawingView:(ACEDrawingView *)view didEndDrawUsingTool:(id<ACEDrawingTool>)tool;
-    // お絵描き開始
-    func drawingView(view:ACEDrawingView, willBeginDrawUsingTool tool:AnyObject) {
-        // バイブレーション
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+    
+    // タッチエンド(お絵描き終了)
+    func drawingView(view:ACEDrawingView, didEndDrawUsingTool tool:AnyObject) {
+        if let ap = audioPlayer {
+            ap.play()
+        }
     }
     
     override func didReceiveMemoryWarning() {

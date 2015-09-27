@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49D9E38D1D3EA58EF071542C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5593B068F7BD592E37061D9A /* libPods.a */; };
+		ED1E79E81BB605A20008BCAD /* onara_002.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ED1E79E71BB605A20008BCAD /* onara_002.mp3 */; settings = {ASSET_TAGS = (); }; };
 		EDF82E131BAE9E9B00EC0172 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF82E121BAE9E9B00EC0172 /* AppDelegate.swift */; };
 		EDF82E151BAE9E9B00EC0172 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDF82E141BAE9E9B00EC0172 /* ViewController.swift */; };
 		EDF82E181BAE9E9B00EC0172 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EDF82E161BAE9E9B00EC0172 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		05AC42FE21DF11793F6D2A75 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		3D750604DB00540CD29A5CA8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		5593B068F7BD592E37061D9A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED1E79E71BB605A20008BCAD /* onara_002.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onara_002.mp3; sourceTree = "<group>"; };
 		EDF82E0F1BAE9E9B00EC0172 /* PaintApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDF82E121BAE9E9B00EC0172 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EDF82E141BAE9E9B00EC0172 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 		EDF82E111BAE9E9B00EC0172 /* PaintApp */ = {
 			isa = PBXGroup;
 			children = (
+				ED1E79E71BB605A20008BCAD /* onara_002.mp3 */,
 				EDF82E121BAE9E9B00EC0172 /* AppDelegate.swift */,
 				EDF82E401BAEA18100EC0172 /* PaintViewController.swift */,
 				EDF82E141BAE9E9B00EC0172 /* ViewController.swift */,
@@ -267,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EDFA476D1BAEBC58004C50A7 /* .gitignore in Resources */,
+				ED1E79E81BB605A20008BCAD /* onara_002.mp3 in Resources */,
 				EDF82E1D1BAE9E9B00EC0172 /* LaunchScreen.storyboard in Resources */,
 				EDF82E1A1BAE9E9B00EC0172 /* Assets.xcassets in Resources */,
 				EDF82E181BAE9E9B00EC0172 /* Main.storyboard in Resources */,
